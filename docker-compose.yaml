@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  db:
+    container_name: jkprintpack_database
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'jkprintdb'
+      MYSQL_USER: 'jkprintpack'
+      MYSQL_PASSWORD: '1szgYe7SEC5Qcz42TdVH'
+      MYSQL_ROOT_PASSWORD: '1szgYe7SEC5Qcz42TdVH'
+    ports:
+      - '3306:3306'
+    volumes:
+      - jkprintpack-db:/var/lib/mysql
+    networks:
+        jkprintpack:
+            ipv4_address: 172.20.0.2
+
+volumes:
+  jkprintpack-db:
+networks:
+  jkprintpack:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+
